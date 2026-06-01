@@ -6,6 +6,20 @@
     <title>GPC Toast Test · Products</title>
     <link rel="stylesheet" href="styles.css" />
 
+    <!-- Optional GPC simulation for testing: add ?gpc=1 to the URL (persists for the session; ?gpc=0 clears it). -->
+    <script>
+      (function () {
+        try {
+          var p = new URLSearchParams(location.search);
+          if (p.get('gpc') === '1') sessionStorage.setItem('simulateGpc', '1');
+          if (p.get('gpc') === '0') sessionStorage.removeItem('simulateGpc');
+          if (sessionStorage.getItem('simulateGpc') === '1') {
+            Object.defineProperty(navigator, 'globalPrivacyControl', { value: true, configurable: true });
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <!-- Usercentrics CMP (V3) — PR 1485 sandbox loader -->
     <script
       id="usercentrics-cmp"

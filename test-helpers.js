@@ -7,8 +7,11 @@
   var statusEl = document.getElementById('gpc-status');
   if (statusEl) {
     var gpc = navigator.globalPrivacyControl;
+    var simulated = sessionStorage.getItem('simulateGpc') === '1';
     if (gpc === true) {
-      statusEl.textContent = 'ON (navigator.globalPrivacyControl === true)';
+      statusEl.textContent = simulated
+        ? 'ON (simulated via ?gpc=1)'
+        : 'ON (navigator.globalPrivacyControl === true)';
       statusEl.classList.add('gpc-on');
     } else if (gpc === false) {
       statusEl.textContent = 'OFF (navigator.globalPrivacyControl === false)';

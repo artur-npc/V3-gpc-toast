@@ -42,10 +42,25 @@ python3 -m http.server 8090
 # then open http://localhost:8090/
 ```
 
+## Enabling the GPC signal
+
+The toast only appears when the browser actually sends GPC
+(`navigator.globalPrivacyControl === true`). No browser sends it by default.
+
+Either enable it natively/via extension:
+
+- **Firefox**: `about:config` → `privacy.globalprivacycontrol.enabled = true`
+- **Brave**: Settings → Privacy → "Tell sites not to sell or share my data"
+- **Chrome**: requires an extension (OptMeowt, DuckDuckGo, Privacy Badger)
+
+…or use the built-in **simulation** (any browser): append **`?gpc=1`** to the URL
+(e.g. `index.html?gpc=1`). It sets `navigator.globalPrivacyControl = true` before the CMP
+loader runs and persists for the browser session. Clear it with `?gpc=0`.
+
 ## Test flow
 
-1. Enable Global Privacy Control in the browser (extension or browser flag) so
-   `navigator.globalPrivacyControl === true`.
+1. Enable GPC (native/extension) or open the site with `?gpc=1`. The status line on the
+   page should read **GPC signal: ON**.
 2. Open the site in a fresh profile — the GPC "honored" toast should appear **once**.
 3. Navigate across Home → Products → About → Contact and reload pages.
 4. **Expected (post-fix):** the toast does **not** reappear on every page load.
