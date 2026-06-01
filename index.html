@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GPC Toast Test · Home</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Usercentrics CMP (V3) — PR 1485 sandbox loader -->
+    <script
+      id="usercentrics-cmp"
+      src="https://web.cmp.usercentrics-sandbox.eu/ui/pr/1485/loader.js"
+      data-settings-id="cqNAsnaCNNTg5s"
+      data-sandbox="1"
+    ></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">🛡️ GPC Toast Test Site</div>
+      <nav class="site-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <span class="page-tag">Page: Home</span>
+      <h1>Home</h1>
+      <p class="muted">
+        Static multi-page site for manually testing the GPC toast notification behavior of
+        EUD-6110 against the Usercentrics CMP V3 sandbox build (PR&nbsp;1485).
+      </p>
+
+      <div class="card">
+        <h2>Configuration</h2>
+        <ul>
+          <li>Settings ID: <code>cqNAsnaCNNTg5s</code></li>
+          <li>Loader: <code>web.cmp.usercentrics-sandbox.eu/ui/pr/1485/loader.js</code></li>
+          <li>Sandbox: <code>data-sandbox="1"</code></li>
+        </ul>
+        <p>
+          GPC signal status:
+          <span id="gpc-status" class="gpc-status">checking…</span>
+        </p>
+        <p>
+          Page loads this session: <strong id="load-count">1</strong>
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>How to test the GPC toast</h2>
+        <ol>
+          <li>Enable Global Privacy Control in your browser (extension or <code>navigator.globalPrivacyControl</code>).</li>
+          <li>Load this page with a fresh profile — the GPC "honored" toast should appear <strong>once</strong>.</li>
+          <li>Navigate between Home / Products / About / Contact and reload pages.</li>
+          <li>Expected (post-fix): the toast does <strong>not</strong> reappear on every page load.</li>
+        </ol>
+        <div class="btn-row">
+          <button class="action" onclick="location.reload()">Reload this page</button>
+          <button class="action secondary" onclick="location.href='products.html'">Go to Products →</button>
+          <button class="action secondary" onclick="sessionStorage.removeItem('gpcPageLoads'); location.reload()">Reset load counter</button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      GPC toast manual test harness · Usercentrics CMP V3 · PR 1485 sandbox
+    </footer>
+
+    <script src="test-helpers.js"></script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GPC Toast Test · About</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Usercentrics CMP (V3) — PR 1485 sandbox loader -->
+    <script
+      id="usercentrics-cmp"
+      src="https://web.cmp.usercentrics-sandbox.eu/ui/pr/1485/loader.js"
+      data-settings-id="cqNAsnaCNNTg5s"
+      data-sandbox="1"
+    ></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">🛡️ GPC Toast Test Site</div>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <span class="page-tag">Page: About</span>
+      <h1>About</h1>
+      <p class="muted">
+        Third page for cross-page GPC toast verification.
+      </p>
+
+      <div class="card">
+        <h2>Status</h2>
+        <p>GPC signal: <span id="gpc-status" class="gpc-status">checking…</span></p>
+        <p>Page loads this session: <strong id="load-count">1</strong></p>
+        <div class="btn-row">
+          <button class="action" onclick="location.reload()">Reload this page</button>
+          <button class="action secondary" onclick="location.href='contact.html'">Go to Contact →</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Sample content</h2>
+        <p>
+          This site exists only to host the Usercentrics CMP sandbox build so the GPC toast
+          notification behavior described in EUD-6110 can be reproduced across multiple page
+          loads.
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      GPC toast manual test harness · Usercentrics CMP V3 · PR 1485 sandbox
+    </footer>
+
+    <script src="test-helpers.js"></script>
+  </body>
+</html>
