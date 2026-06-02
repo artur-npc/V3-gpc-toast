@@ -9,7 +9,7 @@ page load") against the Usercentrics CMP **V3** sandbox build.
 | Setting | Value |
 |---|---|
 | Settings ID | `cqNAsnaCNNTg5s` |
-| Loader | `https://web.cmp.usercentrics-sandbox.eu/ui/pr/1485/loader.js` |
+| Loader | `https://web.cmp.usercentrics-sandbox.eu/ui/loader.js` |
 | Sandbox | `data-sandbox="1"` |
 
 The CMP is embedded on every page via:
@@ -17,7 +17,7 @@ The CMP is embedded on every page via:
 ```html
 <script
   id="usercentrics-cmp"
-  src="https://web.cmp.usercentrics-sandbox.eu/ui/pr/1485/loader.js"
+  src="https://web.cmp.usercentrics-sandbox.eu/ui/loader.js"
   data-settings-id="cqNAsnaCNNTg5s"
   data-sandbox="1"
 ></script>
